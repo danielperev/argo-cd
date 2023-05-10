@@ -144,7 +144,7 @@ type ClaimsEnforcerFunc func(claims jwt.Claims, rvals ...interface{}) bool
 func newEnforcerSafe(matchFunction govaluate.ExpressionFunction, params ...interface{}) (e CasbinEnforcer, err error) {
 	defer func() {
 		if r := recover(); r != nil {
-			err = fmt.Errorf("%v", r)
+			err = fmt.Errorf("enforcer: %+v", r)
 			e = nil
 		}
 	}()
