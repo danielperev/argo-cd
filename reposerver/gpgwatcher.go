@@ -72,7 +72,7 @@ func StartGPGWatcher(sourcePath string) error {
 				if !ok {
 					return
 				}
-				log.Errorf("%v", err)
+				log.Errorf("gpg: %+v", err)
 			}
 		}
 	}()
