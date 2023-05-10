@@ -161,7 +161,7 @@ func cmpSupports(ctx context.Context, pluginSockFilePath, appPath, repoPath, fil
 		log.WithFields(log.Fields{
 			common.SecurityField:    common.SecurityMedium,
 			common.SecurityCWEField: 775,
-		}).Errorf("error dialing to cmp-server for plugin %s, %v", fileName, err)
+		}).Errorf("error dialing to cmp-server for plugin %s with app path '%s', %v", fileName, appPath, err)
 		return nil, nil, false
 	}
 
@@ -170,7 +170,7 @@ func cmpSupports(ctx context.Context, pluginSockFilePath, appPath, repoPath, fil
 		log.WithFields(log.Fields{
 			common.SecurityField:    common.SecurityMedium,
 			common.SecurityCWEField: 775,
-		}).Errorf("repository %s is not the match because %v", repoPath, err)
+		}).Errorf("plugin %s does not match app path '%s' because %v", fileName, appPath, err)
 		io.Close(conn)
 		return nil, nil, false
 	}
@@ -183,7 +183,7 @@ func cmpSupports(ctx context.Context, pluginSockFilePath, appPath, repoPath, fil
 		log.WithFields(log.Fields{
 			common.SecurityField:    common.SecurityLow,
 			common.SecurityCWEField: 775,
-		}).Debugf("Reponse from socket file %s does not support %v", fileName, repoPath)
+		}).Debugf("Response indicates that plugin %s does not support app path '%s'", fileName, appPath)
 		io.Close(conn)
 		return nil, nil, false
 	}
