@@ -453,6 +453,7 @@ jobs:
           done
       - name: Run E2E testsuite
         run: |
+          echo '::add-matcher::.github/go-test-reporter.json'
           set -x
           make test-e2e-local
       - name: Upload e2e-server logs

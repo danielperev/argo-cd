@@ -1,0 +1,15 @@
+{
+    "problemMatcher": [
+        {
+            "owner": "go-e2e-test-error-trace",
+            "pattern": [
+                {
+                    "regexp": "\\b(Error) Trace:\\s+/home/runner/work/(?:[^/]+/){2}([^:]+):(\\d+)$",
+                    "severity": 1,
+                    "file": 2,
+                    "line": 3
+                }
+            ]
+        }
+    ]
+}
